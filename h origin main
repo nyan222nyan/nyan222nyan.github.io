@@ -1,0 +1,9 @@
+*   [33m97c03f0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m READMEの競合を解消して履歴を統合
+[31m|[m[32m\[m  
+[31m|[m * [33m9f18d8a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Initial commit
+* [33m3f5d170[m フォルダ名を1023_github_ioに変更
+* [33mdd3e9b9[m 最初のファイル
+* [33md64ad27[m readme追加
+* [33m6524424[m アップロード先修正
+* [33mf60d60b[m index追加
+* [33ma3fa069[m 初回ファイル作成
