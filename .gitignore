@@ -1,0 +1,12 @@
+# Mac
+.DS_Store
+
+# 画像・動画をGit管理から除外
+img/
+images/
+video/
+videos/
+# 編集フォルダをGit管理から除外
+local/
+# VS Codeの設定をGit管理から除外
+.vscode/

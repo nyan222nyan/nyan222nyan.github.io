@@ -1,0 +1,89 @@
+/* 文字コードを指定する */
+@charset "UTF-8";
+
+body {
+  background: #efefef;
+  /* フッターを最下部につけて表示する */
+  /* grid layout */
+  display: grid;
+  /* 子要素行（ここでは3つ header main footer） */
+  grid-template-rows: auto 1fr auto;
+  /* 最小の高さ */
+  min-height: 100vh;
+}
+
+.container {
+  background: #9f9e9e;
+}
+
+header {
+  background: #dfdfdf;
+  padding: 14px 0;
+
+  /* 要素を中央にそろえる（tac以外の方法） */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header>h1 {
+  font-size: 24px;
+  margin: 10px;
+}
+
+main {
+  background: #eaeaeb;
+  width: 1080px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.wrapper {
+  background: #aeeecc;
+}
+
+.box {
+  background: #6a91ec;
+}
+
+
+
+
+
+/* フッター */
+footer {
+  background: #dfdfdf;
+  color: #333;
+
+  /* 要素を中央にそろえる（tac以外の方法） */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* ▼レスポンシブ▼ */
+/* 720px以下 */
+@media (width <=720px) {
+
+  main {
+    width: 100%;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  /* .wrapper {
+    background: #aeeecc;
+
+  } */
+
+}
+
+/* /レスポンシブ */

@@ -1,0 +1,43 @@
+    /*  リセットCSS */
+
+    /* 文字コードを指定する */
+    @charset "UTF-8";
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+      font-family: sans-serif;
+    }
+
+    a {
+      color: inherit;
+      /* リンクの下線や色を変えない */
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      /* 画像の余白を無くす vertical-align */
+      vertical-align: bottom;
+    }
+
+    ul {
+    /* ulの黒い丸を消す */
+      list-style: none;
+    }
+
+    html{
+      font-size: 100%;
+      /* ページ内リンクの動きをスムーズにする */
+      scroll-behavior: smooth;
+    }
+
+    body{
+      background-color: #fff; /* bgc#fff 省略入力 */
+      color: #333; /* c#333 省略入力 */
+    }
+
+    /*  リセットCSS */
