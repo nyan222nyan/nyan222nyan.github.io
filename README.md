@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Project Name｜サイト名
 
 Webサイトの制作概要を簡潔に説明します。
@@ -68,3 +69,7 @@ project/
 ## Credits｜使用素材・ライセンス
 
 使用した外部ライブラリ・画像素材などについて、必要なクレジットを記載します。
+=======
+# nyan222nyan.github.io
+GitHub Pages用
+>>>>>>> origin/main
