@@ -19,8 +19,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          local-dir: ./public/1015_sass_scss_dental/
-          server-dir: /works/1015_sass_scss_dental/
+          local-dir: ./public/1023_git/
+          server-dir: /works/1023_git/
           exclude: |
             **/.git*
             **/.git*/**
