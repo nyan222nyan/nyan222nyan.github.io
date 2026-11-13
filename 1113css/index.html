@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f5">
+  <meta name="description" content="Tailwind CSSで作る見出しデザインのリファレンス。気になるスタイルのコードをコピーして、制作に活用できます。">
+  <title>Heading Lab — Tailwind見出しリファレンス</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { font-family: "DM Sans", "Noto Sans JP", sans-serif; }
+    .mono { font-family: "DM Mono", monospace; }
+    .mesh {
+      background-color: #f7f7f5;
+      background-image: radial-gradient(#d7d9d4 0.7px, transparent 0.7px);
+      background-size: 19px 19px;
+    }
+    .highlight-swipe { background: linear-gradient(transparent 58%, #d7f36a 58%); }
+    .heading-card { transition: transform 220ms ease, box-shadow 220ms ease; }
+    .heading-card:hover { transform: translateY(-4px); box-shadow: 0 18px 45px -24px rgb(27 37 25 / 25%); }
+    .heading-card:hover .preview-arrow { transform: translateX(4px); }
+    .preview-arrow { transition: transform 180ms ease; }
+    .float-dot { animation: float 3.2s ease-in-out infinite; }
+    .shine-text { background: linear-gradient(100deg, #6d4aff 20%, #eb65bb 50%, #6d4aff 80%); background-size: 200% auto; color: transparent; background-clip: text; animation: shine 4s linear infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    @keyframes shine { to { background-position: 200% center; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body class="mesh min-h-screen text-[#20251f] antialiased">
+  <div class="mx-auto max-w-[1440px] px-4 pb-16 sm:px-7 lg:px-10">
+    <header class="pt-6 sm:pt-8">
+      <nav class="flex items-center justify-between border-b border-[#20251f]/10 pb-5" aria-label="メインナビゲーション">
+        <a href="#" class="flex items-center gap-2.5 font-extrabold tracking-tight" aria-label="Heading Lab ホーム">
+          <span class="grid size-9 place-items-center rounded-xl bg-[#20251f] text-[#d7f36a]"><i data-lucide="type" class="size-5"></i></span>
+          <span class="text-lg">heading<span class="text-[#79816f]">.lab</span></span>
+        </a>
+        <span class="mono hidden text-[11px] uppercase tracking-[.2em] text-[#777d72] sm:block">A tiny library for better headlines</span>
+        <a href="https://tailwindcss.com/docs" target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 rounded-full border border-[#20251f]/15 px-3 py-2 text-xs font-semibold transition hover:bg-white">
+          Tailwind docs <i data-lucide="arrow-up-right" class="size-3.5"></i>
+        </a>
+      </nav>
+
+      <section class="relative overflow-hidden py-12 sm:py-16 lg:py-[4.5rem]" aria-labelledby="page-title">
+        <div class="absolute -right-10 top-8 hidden size-48 rounded-full border border-[#20251f]/10 sm:block"></div>
+        <div class="absolute -right-1 top-16 hidden size-32 rounded-full border border-[#20251f]/10 sm:block"></div>
+        <div class="relative max-w-3xl">
+          <p class="mono mb-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[.18em] text-[#697260]">
+            <span class="size-2 rounded-full bg-[#a2c83f]"></span> UI inspiration / 01
+          </p>
+          <h1 id="page-title" class="max-w-2xl text-4xl font-black leading-[1.15] tracking-[-.055em] sm:text-6xl lg:text-[4.25rem]">
+            伝わる見出しを、<br><span class="highlight-swipe">さくっとデザイン。</span>
+          </h1>
+          <p class="mt-5 max-w-xl text-sm leading-7 text-[#697066] sm:text-base">
+            Tailwind CSSでつくる見出しパターン集。気になるデザインを見つけたら、コードをコピーしてあなたのプロジェクトへ。
+          </p>
+        </div>
+        <div class="relative mt-8 flex flex-wrap items-end justify-between gap-5">
+          <div class="flex flex-wrap gap-2" id="filters" aria-label="カテゴリで絞り込む"></div>
+          <label class="flex w-full items-center gap-2.5 rounded-xl border border-[#20251f]/15 bg-white/80 px-3.5 py-3 shadow-sm shadow-black/[.02] focus-within:border-[#7a9632] sm:w-72">
+            <i data-lucide="search" class="size-4 shrink-0 text-[#777d72]"></i>
+            <span class="sr-only">見出しを検索</span>
+            <input id="search" type="search" placeholder="見出しを検索..." class="w-full bg-transparent text-sm outline-none placeholder:text-[#999e95]" autocomplete="off">
+            <kbd class="mono hidden rounded border border-[#20251f]/10 px-1.5 py-0.5 text-[10px] text-[#858a80] sm:inline">⌘ K</kbd>
+          </label>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <div class="mb-4 flex items-center justify-between border-b border-[#20251f]/10 pb-3">
+        <p class="text-xs font-semibold text-[#697066]"><span id="result-count" class="text-[#20251f]">8</span> styles <span class="mx-1 text-[#a2a69e]">/</span> 見出しデザイン</p>
+        <p class="mono text-[10px] uppercase tracking-[.15em] text-[#8b9087]">Hover to preview</p>
+      </div>
+      <div id="grid" class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" aria-live="polite"></div>
+      <p id="empty-state" class="hidden rounded-2xl border border-dashed border-[#20251f]/20 bg-white/50 px-5 py-16 text-center text-sm text-[#697066]">見つかりませんでした。検索ワードを変えてみてください。</p>
+    </main>
+
+    <footer class="mt-12 flex flex-col gap-3 border-t border-[#20251f]/10 pt-5 text-xs text-[#81877c] sm:flex-row sm:items-center sm:justify-between">
+      <p>Made for makers <span class="px-1 text-[#a2c83f]">✳</span> Tailwind CSS Heading Reference</p>
+      <p class="mono">8 patterns · copy & build</p>
+    </footer>
+  </div>
+
+  <script>
+    const styles = [
+      {
+        title: "Gradient Line", category: "アクセント", number: "01", tags: "グラデーション 下線 シンプル",
+        description: "グラデーションのラインで、軽やかな強調を。",
+        preview: '<h2 class="text-xl font-extrabold tracking-tight text-slate-800 sm:text-2xl">Make it <span class="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">stand out.</span></h2><div class="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-400"></div>',
+        snippet: '<h2 class="text-2xl font-extrabold tracking-tight text-slate-800">Make it <span class="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">stand out.</span></h2>\n<div class="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-400"></div>'
+      },
+      {
+        title: "Marker Highlight", category: "アクセント", number: "02", tags: "背景 ハイライト マーカー",
+        description: "マーカー風の帯で、視線を集める見出し。",
+        preview: '<h2 class="text-xl font-black leading-snug tracking-tight text-slate-800 sm:text-2xl">Small steps,<br><span class="highlight-swipe">big changes.</span></h2>',
+        snippet: '<h2 class="text-2xl font-black leading-snug tracking-tight text-slate-800">Small steps,<br><span class="bg-gradient-to-t from-lime-300 from-[38%] to-transparent to-[38%]">big changes.</span></h2>'
+      },
+      {
+        title: "Icon & Label", category: "アイコン", number: "03", tags: "アイコン ラベル バッジ",
+        description: "小さなラベルとアイコンで文脈をプラス。",
+        preview: '<div class="mb-2 inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-amber-800 sm:text-[10px]"><span class="text-xs">✳</span> Featured</div><h2 class="text-xl font-extrabold leading-tight tracking-tight text-slate-800 sm:text-2xl">Good things<br>take time.</h2>',
+        snippet: '<div class="mb-2 inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-800"><span aria-hidden="true">✳</span> Featured</div>\n<h2 class="text-2xl font-extrabold leading-tight tracking-tight text-slate-800">Good things<br>take time.</h2>'
+      },
+      {
+        title: "Number Accent", category: "レイアウト", number: "04", tags: "番号 セクション レイアウト",
+        description: "大きな番号を添えて、章立てを印象的に。",
+        preview: '<div class="flex items-start gap-3"><span class="mono pt-1 text-xs font-medium text-rose-500">01 /</span><div><h2 class="text-xl font-black leading-tight tracking-tight text-slate-800 sm:text-2xl">Our story</h2><div class="mt-2 h-0.5 w-8 bg-rose-400"></div></div></div>',
+        snippet: '<div class="flex items-start gap-3">\n  <span class="font-mono pt-1 text-xs font-medium text-rose-500">01 /</span>\n  <div><h2 class="text-2xl font-black leading-tight tracking-tight text-slate-800">Our story</h2><div class="mt-2 h-0.5 w-8 bg-rose-400"></div></div>\n</div>'
+      },
+      {
+        title: "Soft Shadow", category: "立体", number: "05", tags: "立体 シャドウ 影",
+        description: "柔らかな影と縁取りで、奥行きを演出。",
+        preview: '<h2 class="text-xl font-black tracking-tight text-white [text-shadow:2px_3px_0_#c4b5fd,4px_6px_0_#ddd6fe] sm:text-2xl">Dream<br>bigger.</h2><p class="mt-3 text-[10px] font-medium text-violet-600">YOUR NEXT CHAPTER</p>',
+        snippet: '<h2 class="text-2xl font-black tracking-tight text-white [text-shadow:2px_3px_0_#c4b5fd,4px_6px_0_#ddd6fe]">Dream<br>bigger.</h2>'
+      },
+      {
+        title: "Side Rule", category: "レイアウト", number: "06", tags: "ライン ボーダー ミニマル",
+        description: "左のラインがつくる、すっきりした視線誘導。",
+        preview: '<div class="border-l-[3px] border-emerald-400 pl-3"><p class="mb-1 text-[9px] font-bold uppercase tracking-[.18em] text-emerald-700 sm:text-[10px]">A little inspiration</p><h2 class="text-xl font-bold leading-tight tracking-tight text-slate-800 sm:text-2xl">Stay curious.</h2></div>',
+        snippet: '<div class="border-l-[3px] border-emerald-400 pl-3">\n  <p class="mb-1 text-[10px] font-bold uppercase tracking-[.18em] text-emerald-700">A little inspiration</p>\n  <h2 class="text-2xl font-bold leading-tight tracking-tight text-slate-800">Stay curious.</h2>\n</div>'
+      },
+      {
+        title: "Outline Type", category: "タイポグラフィ", number: "07", tags: "アウトライン 輪郭 タイポ",
+        description: "輪郭だけの文字で、グラフィカルに。",
+        preview: '<h2 class="text-[1.7rem] font-black uppercase leading-none tracking-[-.06em] text-transparent [-webkit-text-stroke:1px_#334155] sm:text-3xl">Create<br><span class="text-slate-700 [-webkit-text-stroke:0]">your way.</span></h2>',
+        snippet: '<h2 class="text-3xl font-black uppercase leading-none tracking-[-.06em] text-transparent [-webkit-text-stroke:1px_#334155]">Create<br><span class="text-slate-700 [-webkit-text-stroke:0]">your way.</span></h2>'
+      },
+      {
+        title: "Moving Gradient", category: "アニメーション", number: "08", tags: "アニメーション グラデーション 動き",
+        description: "ゆっくり流れる色で、印象に残る主役に。",
+        preview: '<h2 class="shine-text text-xl font-black leading-tight tracking-tight sm:text-2xl">Ideas in<br>motion.</h2><div class="mt-3 flex items-center gap-1.5 text-[9px] font-semibold text-slate-500"><span class="float-dot size-1.5 rounded-full bg-violet-500"></span> KEEP EXPLORING</div>',
+        snippet: '<h2 class="bg-gradient-to-r from-violet-600 via-pink-500 to-violet-600 bg-[length:200%_auto] bg-clip-text text-2xl font-black leading-tight tracking-tight text-transparent animate-[gradient_4s_linear_infinite]">Ideas in<br>motion.</h2>\n<style>\n@keyframes gradient { to { background-position: 200% center; } }\n</style>'
+      }
+    ];
+
+    const categories = ["すべて", ...new Set(styles.map((style) => style.category))];
+    let activeCategory = "すべて";
+    const grid = document.getElementById("grid");
+    const filterContainer = document.getElementById("filters");
+    const searchInput = document.getElementById("search");
+
+    function renderFilters() {
+      filterContainer.innerHTML = categories.map((category) => {
+        const selected = category === activeCategory;
+        return `<button type="button" data-category="${category}" aria-pressed="${selected}" class="rounded-full border px-3.5 py-2 text-xs font-semibold transition ${selected ? "border-[#20251f] bg-[#20251f] text-white" : "border-[#20251f]/15 bg-white/60 text-[#62685e] hover:border-[#20251f]/35 hover:bg-white"}">${category}</button>`;
+      }).join("");
+    }
+
+    function renderCards() {
+      const query = searchInput.value.trim().toLocaleLowerCase("ja");
+      const filtered = styles.filter((style) => {
+        const matchesCategory = activeCategory === "すべて" || style.category === activeCategory;
+        const matchesQuery = `${style.title} ${style.category} ${style.tags} ${style.description}`.toLocaleLowerCase("ja").includes(query);
+        return matchesCategory && matchesQuery;
+      });
+
+      document.getElementById("result-count").textContent = filtered.length;
+      document.getElementById("empty-state").classList.toggle("hidden", filtered.length !== 0);
+      grid.innerHTML = filtered.map((style) => `
+        <article class="heading-card flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#20251f]/10 bg-white shadow-sm shadow-black/[.025]">
+          <div class="flex items-center justify-between px-3.5 pt-3 sm:px-4 sm:pt-4">
+            <span class="mono text-[9px] tracking-[.14em] text-[#989d93]">HL / ${style.number}</span>
+            <span class="rounded-full bg-[#f2f3ef] px-2 py-1 text-[9px] font-semibold text-[#72786d]">${style.category}</span>
+          </div>
+          <div class="flex min-h-[142px] flex-1 flex-col items-start justify-center px-4 py-6 sm:min-h-[168px] sm:px-6">${style.preview}</div>
+          <div class="border-t border-[#20251f]/[.07] px-3.5 py-3 sm:px-4">
+            <div class="mb-2.5 flex items-start justify-between gap-2">
+              <div class="min-w-0">
+                <h2 class="truncate text-xs font-bold tracking-tight text-[#30362e] sm:text-sm">${style.title}</h2>
+                <p class="mt-1 line-clamp-2 min-h-8 text-[10px] leading-4 text-[#878c83] sm:text-[11px]">${style.description}</p>
+              </div>
+              <i data-lucide="arrow-right" class="preview-arrow mt-0.5 size-3.5 shrink-0 text-[#a3a89f]"></i>
+            </div>
+            <div class="relative rounded-lg bg-[#f5f6f3] px-2.5 py-2.5">
+              <pre class="mono max-h-[58px] overflow-hidden whitespace-pre-wrap break-words pr-8 text-[8px] leading-[1.55] text-[#5b6255] sm:text-[9px]"><code></code></pre>
+              <button type="button" class="copy-button absolute right-1.5 top-1.5 grid size-7 place-items-center rounded-md text-[#72786d] transition hover:bg-white hover:text-[#20251f] focus:outline-none focus:ring-2 focus:ring-[#a2c83f]" aria-label="${style.title}のコードをコピー" title="コードをコピー">
+                <i data-lucide="copy" class="size-3.5"></i>
+              </button>
+              <span class="copy-status pointer-events-none absolute right-1 top-[-25px] hidden rounded-md bg-[#20251f] px-2 py-1 text-[9px] font-semibold text-white" role="status">コピーしました！</span>
+            </div>
+          </div>
+        </article>`).join("");
+
+      Array.from(grid.querySelectorAll("article")).forEach((card, index) => {
+        card.querySelector("code").textContent = filtered[index].snippet;
+        card.querySelector(".copy-button").addEventListener("click", () => copySnippet(filtered[index].snippet, card));
+      });
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    async function writeClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return;
+        } catch (error) {
+          console.warn("Clipboard APIを利用できないため、代替方式を試します。", error);
+        }
+      }
+
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      let copied;
+      try {
+        copied = document.execCommand("copy");
+      } finally {
+        textarea.remove();
+      }
+      if (!copied) throw new Error("ブラウザーがコピー操作を許可しませんでした。");
+    }
+
+    async function copySnippet(snippet, card) {
+      const button = card.querySelector(".copy-button");
+      const status = card.querySelector(".copy-status");
+      try {
+        await writeClipboard(snippet);
+        status.textContent = "コピーしました！";
+        button.setAttribute("aria-label", "コピーしました");
+      } catch (error) {
+        status.textContent = "コピーできませんでした";
+        console.error("クリップボードへのコピーに失敗しました。", error);
+      }
+      status.classList.remove("hidden");
+      window.setTimeout(() => {
+        status.classList.add("hidden");
+        button.setAttribute("aria-label", `${card.querySelector("h2").textContent}のコードをコピー`);
+      }, 1600);
+    }
+
+    filterContainer.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-category]");
+      if (!button) return;
+      activeCategory = button.dataset.category;
+      renderFilters();
+      renderCards();
+    });
+    searchInput.addEventListener("input", renderCards);
+    document.addEventListener("keydown", (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        searchInput.focus();
+      }
+      if (event.key === "Escape" && document.activeElement === searchInput) {
+        searchInput.value = "";
+        renderCards();
+        searchInput.blur();
+      }
+    });
+
+    renderFilters();
+    renderCards();
+    if (window.lucide) window.lucide.createIcons();
+  </script>
+</body>
+</html>
